@@ -1,4 +1,5 @@
 <template>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/admin">後台</router-link>
@@ -54,18 +55,18 @@ export default {
       const token = document.cookie.replace(
         /* eslint-disable */
         /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
-        '$1'
-      )
+        "$1"
+      );
       /* eslint-enable */
       if (token) {
         this.$http.defaults.headers.common.Authorization = token
         const api = `${process.env.VUE_APP_API}api/user/check`
         this.$http
           .post(api, { api_token: this.token })
-          .then(res => {
+          .then((res) => {
             this.checkSucess = true
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err)
             this.$router.push('/login')
           })

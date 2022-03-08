@@ -1,8 +1,11 @@
 <template>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  />
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">前台</router-link>
+      <router-link class="navbar-brand" to="/">下酒菜製造所</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -14,18 +17,24 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarNav"
+      >
         <ul class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link" to="/">首頁</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/Products">產品列表</router-link>
+            <router-link class="nav-link" to="/Products">所有商品</router-link>
+          </li>
+          <!-- <li class="nav-item">
+            <router-link class="nav-link" to="/cart">購物車</router-link>
+          </li> -->
+          <li class="nav-item">
+            <router-link class="nav-link" to="/cart">狗狗專區</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/cart">購物車</router-link>
-          </li>
-           <li class="nav-item">
             <router-link class="nav-link" to="/admin">後台首頁</router-link>
           </li>
           <li class="nav-item">
@@ -33,10 +42,10 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-primary ">
-        <i class="bi bi-cart4 mx-2">購物車</i>
-        <span class="badge rounded-pill bg-danger">{{ cartData.carts.length }}</span>
-      </button>
+      <i class="bi bi-search fs-6 mx-1"></i>
+      <i class="bi bi-person fs-6 mx-1"></i>
+      <i class="bi bi-cart4 fs-6 mx-1"></i>
+      <span class="badge rounded-pill bg-danger">{{ cartData.carts.length }}</span>
     </div>
   </nav>
 </template>
@@ -60,11 +69,12 @@ export default {
   // },
   methods: {
     getCart () {
-      this.$http.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`)
-        .then(res => {
+      this.$http
+        .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`)
+        .then((res) => {
           this.cartData = res.data.data
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err)
         })
     }

@@ -1,6 +1,12 @@
 <template>
   <h2>產品列表</h2>
   <div class="container">
+        <select name="" class="form-select w-25 mb-3 g-0">
+            <option value="全部" selected>全部</option>
+            <option value="床架">床架</option>
+            <option value="收納">收納</option>
+            <option value="窗簾">窗簾</option>
+        </select>
     <div class="row row-cols-1 row-cols-lg-4 g-3">
       <div class="col" v-for="product in products" :key="product.id">
         <div class="card h-100">
